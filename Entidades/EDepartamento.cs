@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class EMarca
+    public class EDepartamento
     {
-        public int IdMarca { get; set; }
+        public string IdDepartamento { get; set; }
         public string Descripcion { get; set; }
-        public bool Activo { get; set; }
     }
 }
