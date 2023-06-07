@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Negocio;
+using Entidades;
 
 namespace PresentacionAdmin.Controllers
 {
@@ -13,18 +15,17 @@ namespace PresentacionAdmin.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Usuarios()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        public JsonResult ListarUsuarios()
         {
-            ViewBag.Message = "Your contact page.";
+            List<EUsuario> oLista = new List<EUsuario>();
+            oLista = new NUsuarios().Listar();
 
-            return View();
+            return Json(oLista, JsonRequestBehavior.AllowGet);
         }
     }
 }
