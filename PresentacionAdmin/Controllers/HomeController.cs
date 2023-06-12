@@ -20,6 +20,7 @@ namespace PresentacionAdmin.Controllers
             return View();
         }
 
+        [HttpGet]
         public JsonResult ListarUsuarios()
         {
             List<EUsuario> oLista = new List<EUsuario>();
