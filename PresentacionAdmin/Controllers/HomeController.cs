@@ -26,7 +26,7 @@ namespace PresentacionAdmin.Controllers
             List<EUsuario> oLista = new List<EUsuario>();
             oLista = new NUsuarios().Listar();
 
-            return Json(oLista, JsonRequestBehavior.AllowGet);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
     }
 }

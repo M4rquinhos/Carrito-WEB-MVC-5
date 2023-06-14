@@ -30,6 +30,9 @@
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Activo</th>
+                    <th>
+
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -40,19 +43,50 @@
 </div>
 
 @section scripts{
-<script>
+    <script>
 
-    jQuery.ajax({
+    @*jQuery.ajax({
         url: '@Url.Action("ListarUsuarios", "Home")',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset = utf-8",
         success: function (data) {
-            debugger;
-            var texto1 = "prueba"
             console.log(data)
         }
-    })
+    })*@
 
-</script>
+        let tablaData = $("#tabla").DataTable({
+        responsive: true,
+        ordering: false,
+        "ajax": {
+            url: '@Url.Action("ListarUsuarios", "Home")',
+            type: "GET",
+            dataType: "json",
+        },
+        "columns": [
+            { "data": "Nombre" },
+            { "data": "Apellidos" },
+            { "data": "Correo" },
+            {
+                "data": "Activo", "render": function (valor) {
+                    if (valor) {
+                        return '<span class="badge bg-success">Sí</span>';
+                    } else {
+                        return '<span class="badge bg-danger">No</span>';
+                    }
+                }
+            },
+            {
+                "defaultContent": '<button type="button" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i></button>' +
+                    '<button type="button" class="btn btn-sm btn-danger ms-2"><i class="fas fa-trash"></i></button>',
+                "orderable": false,
+                "searchable": false,
+                "width": "auto"
+            }
+        ]
+
+    });
+
+
+    </script>
 }
