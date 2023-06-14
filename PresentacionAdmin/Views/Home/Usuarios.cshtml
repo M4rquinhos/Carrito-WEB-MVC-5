@@ -23,16 +23,14 @@
 
         <hr />
 
-        <table id="tabla" class="display cell-border" style="width:100%;">
+        <table id="tabla" class="display cell-border" style="width : 100%">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Correo</th>
                     <th>Activo</th>
-                    <th>
-
-                    </th>
+                    <th style="width:auto"></th>
                 </tr>
             </thead>
             <tbody>
@@ -56,8 +54,9 @@
     })*@
 
         let tablaData = $("#tabla").DataTable({
-        responsive: true,
-        ordering: false,
+            responsive: true,
+            fixedColumns: true,
+            ordering: false,
         "ajax": {
             url: '@Url.Action("ListarUsuarios", "Home")',
             type: "GET",
@@ -77,11 +76,11 @@
                 }
             },
             {
-                "defaultContent": '<button type="button" class="btn btn-sm btn-warning"><i class="fas fa-pen"></i></button>' +
-                    '<button type="button" class="btn btn-sm btn-danger ms-2"><i class="fas fa-trash"></i></button>',
+                "defaultContent": '<button type="button" class="btn btn-warning "><i class="fas fa-pen"></i></button>' +
+                    '<button type="button" class="btn btn-danger ms-2"><i class="fas fa-trash"></i></button>',
                 "orderable": false,
                 "searchable": false,
-                "width": "auto"
+                "width": "90px"
             }
         ]
 
